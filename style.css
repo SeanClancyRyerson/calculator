@@ -1,3 +1,50 @@
 body {
-    background-color: rgb(70, 100, 125);
+    background-color: rgb(255, 218, 148);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(71, 80, 88);
+    padding: 1em;
+    border-radius: 1em;
+    gap: .2em;
+
+}
+
+@font-face {
+    font-family: 'digital-clock-font';
+    src: url('./fonts/digital-7\ \(mono\).ttf');
+}
+
+.calcScreen {
+    background-color: rgb(155, 196, 158);
+    padding-top: .2em;
+    padding-right: .2em;
+    border-radius: .15em;
+}
+
+.calcText {
+    font-size: 3rem;
+    font-family:'digital-clock-font';
+    text-align: right;
+}
+
+.calcRow {
+    display: flex;
+    gap: .2em;
+}
+
+.calcButton {
+    width: 3em;
+    height: 3em;
+    border-radius: .5em;
+}
+
+.operationButton {
+    background-color: rgb(111, 161, 241);
+}
+
