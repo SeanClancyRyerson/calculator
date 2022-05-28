@@ -3,11 +3,19 @@ let firstOp = null;
 let secondOp = null;
 const screenText = document.getElementById("calcText");
 
-// Add event listeners for all buttons on the calculator
-const calcButtons = document.querySelectorAll(".calcButton");
+// Add event listeners for number buttons on the calculator
+const calcButtons = document.querySelectorAll(".numButton");
 calcButtons.forEach((calcButton) =>
   calcButton.addEventListener("click", function (e) {
     appendScreen(this.id);
+  })
+);
+
+//add event listener for operation buttons
+const opButtons = document.querySelectorAll(".operationButton");
+opButtons.forEach((opButton) =>
+  opButton.addEventListener("click", function (e) {
+    console.log(e);
   })
 );
 
@@ -27,7 +35,7 @@ function updateScreen(x) {
 }
 
 function clearCalc() {
-  screenText.textContent = "";
+  screenText.textContent = "0";
   firstOp = null;
   secondOp = null;
 }
