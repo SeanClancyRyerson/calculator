@@ -1,14 +1,36 @@
+//varibles to keep track of first and second operands
+let firstOp = null;
+let secondOp = null;
+const screenText = document.getElementById("calcText");
+
 // Add event listeners for all buttons on the calculator
 const calcButtons = document.querySelectorAll(".calcButton");
 calcButtons.forEach((calcButton) =>
   calcButton.addEventListener("click", function (e) {
-    updateScreen(this.id);
+    appendScreen(this.id);
+    console.log(firstOp);
   })
 );
 
+//only sets the number to the value passed into it
 function updateScreen(x) {
-  const screenText = document.getElementById("calcText");
-  screenText.textContent = x;
+  firstOp = Number(x);
+  screenText.textContent = firstOp;
+}
+
+//Appends digits rather than replacing entirely
+function appendScreen(x) {
+  if (firstOp == null) {
+    updateScreen(x);
+  } else {
+    firstOp = Number(String(firstOp) + String(x));
+    screenText.textContent = firstOp;
+  }
+}
+
+function clearCalc() {
+  screenText.textContent = "";
+  firstOp = null;
 }
 
 function add(x, y) {
