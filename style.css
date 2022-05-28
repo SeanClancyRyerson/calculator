@@ -46,10 +46,20 @@ body {
   font-size: 1.2rem;
 }
 
+.calcButton:active {
+  background-color: rgb(221, 218, 213);
+  transform: translateY(.05rem);
+}
+
 .operationButton {
   background-color: rgb(111, 161, 241);
   color: aliceblue;
   font-size: 1.5rem;
+}
+
+.operationButton:active {
+  background-color: rgb(99, 144, 218);
+  color: aliceblue;
 }
 
 .equalsButton {
@@ -58,7 +68,17 @@ body {
   font-size: 1.5rem;
 }
 
+.equalsButton:active {
+  background-color: rgb(226, 110, 100);
+  color: aliceblue;
+}
+
 .extraButton {
   background-color: rgb(111, 111, 111);
+  color: aliceblue;
+}
+
+.extraButton:active {
+  background-color: rgb(100, 100, 100);
   color: aliceblue;
 }
