@@ -8,15 +8,8 @@ const calcButtons = document.querySelectorAll(".calcButton");
 calcButtons.forEach((calcButton) =>
   calcButton.addEventListener("click", function (e) {
     appendScreen(this.id);
-    console.log(firstOp);
   })
 );
-
-//only sets the number to the value passed into it
-function updateScreen(x) {
-  firstOp = Number(x);
-  screenText.textContent = firstOp;
-}
 
 //Appends digits rather than replacing entirely
 function appendScreen(x) {
@@ -27,10 +20,16 @@ function appendScreen(x) {
     screenText.textContent = firstOp;
   }
 }
+//only sets the number to the value passed into it
+function updateScreen(x) {
+  firstOp = Number(x);
+  screenText.textContent = firstOp;
+}
 
 function clearCalc() {
   screenText.textContent = "";
   firstOp = null;
+  secondOp = null;
 }
 
 function add(x, y) {
