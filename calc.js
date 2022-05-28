@@ -1,7 +1,11 @@
-operate("+", 5, 6);
-operate("-", 5, 6);
-operate("*", 5, 6);
-operate("/", 5, 6);
+// Add event listeners for all buttons on the calculator
+const calcButtons = document.querySelectorAll(".calcButton");
+
+calcButtons.forEach((calcButton) =>
+  calcButton.addEventListener("click", function (e) {
+    console.log(e);
+  })
+);
 
 function add(x, y) {
   return x + y;
@@ -38,8 +42,4 @@ function operate(op, x, y) {
       break;
   }
   console.log(ans);
-}
-
-function buttonPress(e) {
-  console.log(e);
 }
