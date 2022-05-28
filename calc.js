@@ -1,11 +1,15 @@
 // Add event listeners for all buttons on the calculator
 const calcButtons = document.querySelectorAll(".calcButton");
-
 calcButtons.forEach((calcButton) =>
   calcButton.addEventListener("click", function (e) {
-    console.log(e);
+    updateScreen(this.id);
   })
 );
+
+function updateScreen(x) {
+  const screenText = document.getElementById("calcText");
+  screenText.textContent = x;
+}
 
 function add(x, y) {
   return x + y;
