@@ -1,66 +1,64 @@
 body {
-    background-color: rgb(255, 218, 148);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: rgb(211, 178, 218);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .calculator {
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(44, 44, 44);
-    padding: 1em;
-    border-radius: 1em;
-    gap: .2em;
-
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(44, 44, 44);
+  padding: 1em;
+  border-radius: 1em;
+  gap: 0.2em;
 }
 
 @font-face {
-    font-family: 'digital-clock-font';
-    src: url('./fonts/digital-7\ \(mono\).ttf');
+  font-family: "digital-clock-font";
+  src: url("./fonts/digital-7\ \(mono\).ttf");
 }
 
 .calcScreen {
-    background-color: rgb(155, 196, 158);
-    padding-top: .4em;
-    padding-right: .2em;
-    border-radius: .15em;
-    margin-bottom: .4em;
+  background-color: rgb(155, 196, 158);
+  padding-top: 0.4em;
+  padding-right: 0.2em;
+  border-radius: 0.15em;
+  margin-bottom: 0.4em;
 }
 
 .calcText {
-    font-size: 3rem;
-    font-family:'digital-clock-font';
-    text-align: right;
+  font-size: 3rem;
+  font-family: "digital-clock-font";
+  text-align: right;
 }
 
 .calcRow {
-    display: flex;
-    gap: .2em;
+  display: flex;
+  gap: 0.2em;
 }
 
 .calcButton {
-    width: 3rem;
-    height: 3rem;
-    border-radius: .5rem;
-    font-family: monospace;
-    font-size: 1.2rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  font-family: monospace;
+  font-size: 1.2rem;
 }
 
 .operationButton {
-    background-color: rgb(111, 161, 241);
-    color: aliceblue;
-    font-size: 1.5rem;
+  background-color: rgb(111, 161, 241);
+  color: aliceblue;
+  font-size: 1.5rem;
 }
 
 .equalsButton {
-    background-color: rgb(241, 122, 111);
-    color: aliceblue;
-    font-size: 1.5rem;
+  background-color: rgb(241, 122, 111);
+  color: aliceblue;
+  font-size: 1.5rem;
 }
 
 .extraButton {
-    background-color: rgb(111, 111, 111);
-    color: aliceblue;
+  background-color: rgb(111, 111, 111);
+  color: aliceblue;
 }
-
