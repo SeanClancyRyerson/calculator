@@ -2,20 +2,22 @@
 let curNum = null;
 let savedNum = null;
 let operation = null;
-let operationOn = false;
 const screenText = document.getElementById("calcText");
 
 // Add event listeners for number buttons on the calculator
 const calcButtons = document.querySelectorAll(".numButton");
 calcButtons.forEach((calcButton) =>
   calcButton.addEventListener("click", function (e) {
-    if (operationOn) {
-      operationOn = false;
+    if (operation) {
       savedNum = curNum;
       curNum = null;
       clearScreen();
     }
     appendScreen(this.id);
+    console.log("CALCS saved: " + savedNum);
+    console.log("CALCS op:    " + operation);
+    console.log("CALCS cur:   " + curNum);
+    console.log("-----------");
   })
 );
 
@@ -26,11 +28,10 @@ opButtons.forEach((opButton) =>
     //allows toggle of singular operation on and off
     if (operation === this.id) {
       this.classList.toggle("operationOn");
-      operationOn = false;
+      operation = null;
     } else {
       clearOps();
       chooseOperation(this);
-      operationOn = true;
     }
   })
 );
@@ -54,24 +55,32 @@ function updateScreen(x) {
 function chooseOperation(elem) {
   elem.classList.toggle("operationOn");
   operation = elem.id;
-  console.log(operation);
+  console.log("CHOPS saved: " + savedNum);
+  console.log("CHOPS op:    " + operation);
+  console.log("CHOPS cur:   " + curNum);
+  console.log("-----------");
 }
 
 function equalsOperation() {
+  console.log("EQUALS saved: " + savedNum);
+  console.log("EQUALS op:    " + operation);
+  console.log("EQUALS cur:   " + curNum);
   if (operation && savedNum && curNum) {
     let result = operate(operation, savedNum, curNum);
     screenText.textContent = result;
     savedNum = result;
-    curNum = null;
+    curNum = result;
     clearOps();
   }
+  console.log("EQUALS ans:   " + savedNum);
+  console.log("-----------");
 }
 
 function clearOps() {
   opButtons.forEach((opButton) => {
     opButton.classList.remove("operationOn");
   });
-  operationOn = false;
+  operation = null;
 }
 
 function clearScreen() {
@@ -85,7 +94,6 @@ function clearCalc() {
   curNum = null;
   savedNum = null;
   operation = null;
-  operationOn = false;
 }
 
 function add(x, y) {
