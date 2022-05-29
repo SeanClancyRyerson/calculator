@@ -94,15 +94,16 @@ function add(x, y) {
   return x + y;
 }
 
+//reverse order due to first op going into secondOp variable
 function subtract(x, y) {
-  return x - y;
+  return y - x;
 }
 
 function multiply(x, y) {
   return x * y;
 }
 
-//reverse order due to first op going into secondOp variable 
+//reverse order due to first op going into secondOp variable
 function divide(x, y) {
   return y / x;
 }
