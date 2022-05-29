@@ -57,7 +57,8 @@ function appendScreen(x) {
 //only sets the number to the value passed into it
 function updateScreen(x) {
   curNum = Number(x);
-  screenText.textContent = curNum;
+  curNum = round(curNum, 3);
+  curNum = screenText.textContent = curNum;
 }
 
 function chooseOperation(elem) {
@@ -68,10 +69,15 @@ function chooseOperation(elem) {
 function equalsOperation() {
   if (savedOperation && savedNum && curNum) {
     let result = operate(savedOperation, savedNum, curNum);
-    screenText.textContent = result;
-    savedNum = result;
-    curNum = result;
-    clearOps();
+    if (result) {
+      updateScreen(result);
+      savedNum = result;
+      curNum = result;
+      clearOps();
+    } else {
+      clearCalc();
+      screenText.textContent = "NaN";
+    }
   }
 }
 
@@ -99,6 +105,7 @@ function clearCalc() {
   savedNum = null;
 }
 
+//backspace the current number once
 function deleteButton() {
   let temp = String(curNum);
   curNum = temp.substring(0, temp.length - 1);
@@ -118,6 +125,9 @@ function multiply(x, y) {
 }
 
 function divide(x, y) {
+  if (y == 0) {
+    return null;
+  }
   return x / y;
 }
 
@@ -140,4 +150,9 @@ function operate(op, x, y) {
       break;
   }
   return ans;
+}
+
+//taken from https://www.jacklmoore.com/notes/rounding-in-javascript/
+function round(value, decimals) {
+  return Number(Math.round(value + "e" + decimals) + "e-" + decimals);
 }
