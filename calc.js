@@ -1,6 +1,6 @@
 //varibles to keep track of first and second operands
-let firstOp = null;
-let secondOp = null;
+let onScreenOp = null;
+let savedOp = null;
 let operation = null;
 let operationOn = false;
 const screenText = document.getElementById("calcText");
@@ -11,8 +11,8 @@ calcButtons.forEach((calcButton) =>
   calcButton.addEventListener("click", function (e) {
     if (operationOn) {
       operationOn = false;
-      secondOp = firstOp;
-      firstOp = null;
+      savedOp = onScreenOp;
+      onScreenOp = null;
       clearScreen();
     }
     appendScreen(this.id);
@@ -37,18 +37,18 @@ opButtons.forEach((opButton) =>
 
 //Appends digits rather than replacing entirely
 function appendScreen(x) {
-  if (firstOp == null) {
+  if (onScreenOp == null) {
     updateScreen(x);
   } else {
-    firstOp = Number(String(firstOp) + String(x));
-    screenText.textContent = firstOp;
+    onScreenOp = Number(String(onScreenOp) + String(x));
+    screenText.textContent = onScreenOp;
   }
 }
 
 //only sets the number to the value passed into it
 function updateScreen(x) {
-  firstOp = Number(x);
-  screenText.textContent = firstOp;
+  onScreenOp = Number(x);
+  screenText.textContent = onScreenOp;
 }
 
 function chooseOperation(elem) {
@@ -59,11 +59,11 @@ function chooseOperation(elem) {
 
 //TODO fix setting up to chain operations
 function equalsOperation() {
-  if (operation && firstOp && secondOp) {
-    let result = operate(operation, firstOp, secondOp);
+  if (operation && onScreenOp && savedOp) {
+    let result = operate(operation, onScreenOp, savedOp);
     screenText.textContent = result;
-    secondOp = result;
-    firstOp = null;
+    savedOp = result;
+    onScreenOp = null;
     clearOps();
     console.log("TEST21");
   }
@@ -84,8 +84,8 @@ function clearScreen() {
 function clearCalc() {
   clearScreen();
   clearOps();
-  firstOp = null;
-  secondOp = null;
+  onScreenOp = null;
+  savedOp = null;
   operation = null;
   operationOn = false;
 }
@@ -94,7 +94,7 @@ function add(x, y) {
   return x + y;
 }
 
-//reverse order due to first op going into secondOp variable
+//reverse order due to first op going into savedOp variable
 function subtract(x, y) {
   return y - x;
 }
@@ -103,7 +103,7 @@ function multiply(x, y) {
   return x * y;
 }
 
-//reverse order due to first op going into secondOp variable
+//reverse order due to first op going into savedOp variable
 function divide(x, y) {
   return y / x;
 }
