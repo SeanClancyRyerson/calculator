@@ -19,6 +19,7 @@ calcButtons.forEach((calcButton) =>
     appendScreen(this.id);
     console.log("CALCS saved: " + savedNum);
     console.log("CALCS op:    " + operation);
+    console.log("CALCS savOP: " + savedOperation);
     console.log("CALCS cur:   " + curNum);
     console.log("-----------");
   })
@@ -28,6 +29,7 @@ calcButtons.forEach((calcButton) =>
 const opButtons = document.querySelectorAll(".operationButton");
 opButtons.forEach((opButton) =>
   opButton.addEventListener("click", function (e) {
+    equalsOperation();
     //allows toggle of singular operation on and off
     if (operation === this.id) {
       this.classList.toggle("operationOn");
@@ -60,6 +62,7 @@ function chooseOperation(elem) {
   operation = elem.id;
   console.log("CHOPS saved: " + savedNum);
   console.log("CHOPS op:    " + operation);
+  console.log("CHOPS  savOP: " + savedOperation);
   console.log("CHOPS cur:   " + curNum);
   console.log("-----------");
 }
@@ -67,6 +70,7 @@ function chooseOperation(elem) {
 function equalsOperation() {
   console.log("EQUALS saved: " + savedNum);
   console.log("EQUALS op:    " + operation);
+  console.log("EQUALS savOP: " + savedOperation);
   console.log("EQUALS cur:   " + curNum);
   if (savedOperation && savedNum && curNum) {
     let result = operate(savedOperation, savedNum, curNum);
