@@ -57,6 +57,7 @@ function chooseOperation(elem) {
   console.log(operation);
 }
 
+//TODO fix setting up to chain operations
 function equalsOperation() {
   if (operation && firstOp && secondOp) {
     let result = operate(operation, firstOp, secondOp);
@@ -79,10 +80,14 @@ function clearScreen() {
   screenText.textContent = "0";
 }
 
+//reset everything
 function clearCalc() {
-  screenText.textContent = "0";
+  clearScreen();
+  clearOps();
   firstOp = null;
   secondOp = null;
+  operation = null;
+  operationOn = false;
 }
 
 function add(x, y) {
