@@ -1,6 +1,7 @@
 //varibles to keep track of first and second operands
 let firstOp = null;
 let secondOp = null;
+let operation = null;
 const screenText = document.getElementById("calcText");
 
 // Add event listeners for number buttons on the calculator
@@ -15,7 +16,8 @@ calcButtons.forEach((calcButton) =>
 const opButtons = document.querySelectorAll(".operationButton");
 opButtons.forEach((opButton) =>
   opButton.addEventListener("click", function (e) {
-    console.log(e);
+    clearOps();
+    chooseOperation(this);
   })
 );
 
@@ -32,6 +34,18 @@ function appendScreen(x) {
 function updateScreen(x) {
   firstOp = Number(x);
   screenText.textContent = firstOp;
+}
+
+function chooseOperation(elem) {
+  elem.classList.toggle("operationOn");
+  operation = elem.id;
+  console.log(operation);
+}
+
+function clearOps() {
+  opButtons.forEach((opButton) => {
+    opButton.classList.remove("operationOn");
+  });
 }
 
 function clearCalc() {
@@ -61,16 +75,16 @@ calls one of the above functions on the numbers. */
 function operate(op, x, y) {
   let ans;
   switch (op) {
-    case "+":
+    case "plusOp":
       ans = add(x, y);
       break;
-    case "-":
+    case "minusOp":
       ans = subtract(x, y);
       break;
-    case "*":
+    case "multOp":
       ans = multiply(x, y);
       break;
-    case "/":
+    case "divideOp":
       ans = divide(x, y);
       break;
   }

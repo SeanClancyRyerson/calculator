@@ -63,6 +63,11 @@ body {
   color: aliceblue;
 }
 
+.operationOn {
+  background-color: rgb(226, 160, 37);
+    color: aliceblue;
+}
+
 /* Styles for equals button */
 .equalsButton {
   background-color: rgb(241, 122, 111);
