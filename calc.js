@@ -97,7 +97,12 @@ function clearCalc() {
   clearOps();
   curNum = null;
   savedNum = null;
-  operation = null;
+}
+
+function deleteButton() {
+  let temp = String(curNum);
+  curNum = temp.substring(0, temp.length - 1);
+  updateScreen(curNum);
 }
 
 function add(x, y) {
