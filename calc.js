@@ -102,8 +102,9 @@ function multiply(x, y) {
   return x * y;
 }
 
+//reverse order due to first op going into secondOp variable 
 function divide(x, y) {
-  return x / y;
+  return y / x;
 }
 
 /*Create a new function operate that takes an operator and 2 numbers and then 
