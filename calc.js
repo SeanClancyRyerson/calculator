@@ -14,6 +14,7 @@ calcButtons.forEach((calcButton) =>
       operation = null;
       savedNum = curNum;
       curNum = null;
+      clearOpsClass();
       clearScreen();
     }
     appendScreen(this.id);
@@ -83,10 +84,14 @@ function equalsOperation() {
   console.log("-----------");
 }
 
-function clearOps() {
+function clearOpsClass() {
   opButtons.forEach((opButton) => {
     opButton.classList.remove("operationOn");
   });
+}
+
+function clearOps() {
+  clearOpsClass();
   operation = null;
   savedOperation = null;
 }
