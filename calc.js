@@ -4,6 +4,13 @@ let savedNum = null;
 let operation = null;
 let savedOperation = null;
 const screenText = document.getElementById("calcText");
+/*
+console.log("CALCS saved: " + savedNum);
+console.log("CALCS op:    " + operation);
+console.log("CALCS savOP: " + savedOperation);
+console.log("CALCS cur:   " + curNum);
+console.log("-----------");
+*/
 
 // Add event listeners for number buttons on the calculator
 const calcButtons = document.querySelectorAll(".numButton");
@@ -18,11 +25,6 @@ calcButtons.forEach((calcButton) =>
       clearScreen();
     }
     appendScreen(this.id);
-    console.log("CALCS saved: " + savedNum);
-    console.log("CALCS op:    " + operation);
-    console.log("CALCS savOP: " + savedOperation);
-    console.log("CALCS cur:   " + curNum);
-    console.log("-----------");
   })
 );
 
@@ -61,18 +63,9 @@ function updateScreen(x) {
 function chooseOperation(elem) {
   elem.classList.toggle("operationOn");
   operation = elem.id;
-  console.log("CHOPS saved: " + savedNum);
-  console.log("CHOPS op:    " + operation);
-  console.log("CHOPS  savOP: " + savedOperation);
-  console.log("CHOPS cur:   " + curNum);
-  console.log("-----------");
 }
 
 function equalsOperation() {
-  console.log("EQUALS saved: " + savedNum);
-  console.log("EQUALS op:    " + operation);
-  console.log("EQUALS savOP: " + savedOperation);
-  console.log("EQUALS cur:   " + curNum);
   if (savedOperation && savedNum && curNum) {
     let result = operate(savedOperation, savedNum, curNum);
     screenText.textContent = result;
@@ -80,8 +73,6 @@ function equalsOperation() {
     curNum = result;
     clearOps();
   }
-  console.log("EQUALS ans:   " + savedNum);
-  console.log("-----------");
 }
 
 function clearOpsClass() {
