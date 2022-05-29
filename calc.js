@@ -2,12 +2,19 @@
 let firstOp = null;
 let secondOp = null;
 let operation = null;
+let operationOn = false;
 const screenText = document.getElementById("calcText");
 
 // Add event listeners for number buttons on the calculator
 const calcButtons = document.querySelectorAll(".numButton");
 calcButtons.forEach((calcButton) =>
   calcButton.addEventListener("click", function (e) {
+    if (operationOn) {
+      operationOn = false;
+      secondOp = firstOp;
+      firstOp = null;
+      clearScreen();
+    }
     appendScreen(this.id);
   })
 );
@@ -16,8 +23,15 @@ calcButtons.forEach((calcButton) =>
 const opButtons = document.querySelectorAll(".operationButton");
 opButtons.forEach((opButton) =>
   opButton.addEventListener("click", function (e) {
-    clearOps();
-    chooseOperation(this);
+    //allows toggle of singular operation on and off
+    if (operation === this.id) {
+      this.classList.toggle("operationOn");
+      operationOn = false;
+    } else {
+      clearOps();
+      chooseOperation(this);
+      operationOn = true;
+    }
   })
 );
 
@@ -30,6 +44,7 @@ function appendScreen(x) {
     screenText.textContent = firstOp;
   }
 }
+
 //only sets the number to the value passed into it
 function updateScreen(x) {
   firstOp = Number(x);
@@ -42,10 +57,26 @@ function chooseOperation(elem) {
   console.log(operation);
 }
 
+function equalsOperation() {
+  if (operation && firstOp && secondOp) {
+    let result = operate(operation, firstOp, secondOp);
+    screenText.textContent = result;
+    secondOp = result;
+    firstOp = null;
+    clearOps();
+    console.log("TEST21");
+  }
+}
+
 function clearOps() {
   opButtons.forEach((opButton) => {
     opButton.classList.remove("operationOn");
   });
+  operationOn = false;
+}
+
+function clearScreen() {
+  screenText.textContent = "0";
 }
 
 function clearCalc() {
@@ -88,5 +119,5 @@ function operate(op, x, y) {
       ans = divide(x, y);
       break;
   }
-  console.log(ans);
+  return ans;
 }
