@@ -2,6 +2,7 @@
 let curNum = null;
 let savedNum = null;
 let operation = null;
+let savedOperation = null;
 const screenText = document.getElementById("calcText");
 
 // Add event listeners for number buttons on the calculator
@@ -9,6 +10,8 @@ const calcButtons = document.querySelectorAll(".numButton");
 calcButtons.forEach((calcButton) =>
   calcButton.addEventListener("click", function (e) {
     if (operation) {
+      savedOperation = operation;
+      operation = null;
       savedNum = curNum;
       curNum = null;
       clearScreen();
@@ -65,8 +68,8 @@ function equalsOperation() {
   console.log("EQUALS saved: " + savedNum);
   console.log("EQUALS op:    " + operation);
   console.log("EQUALS cur:   " + curNum);
-  if (operation && savedNum && curNum) {
-    let result = operate(operation, savedNum, curNum);
+  if (savedOperation && savedNum && curNum) {
+    let result = operate(savedOperation, savedNum, curNum);
     screenText.textContent = result;
     savedNum = result;
     curNum = result;
@@ -81,6 +84,7 @@ function clearOps() {
     opButton.classList.remove("operationOn");
   });
   operation = null;
+  savedOperation = null;
 }
 
 function clearScreen() {
