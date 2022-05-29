@@ -58,8 +58,8 @@ function chooseOperation(elem) {
 }
 
 function equalsOperation() {
-  if (operation && curNum && savedNum) {
-    let result = operate(operation, curNum, savedNum);
+  if (operation && savedNum && curNum) {
+    let result = operate(operation, savedNum, curNum);
     screenText.textContent = result;
     savedNum = result;
     curNum = null;
@@ -92,18 +92,16 @@ function add(x, y) {
   return x + y;
 }
 
-//reverse order due to first op going into savedNum variable
 function subtract(x, y) {
-  return y - x;
+  return x - y;
 }
 
 function multiply(x, y) {
   return x * y;
 }
 
-//reverse order due to first op going into savedNum variable
 function divide(x, y) {
-  return y / x;
+  return x / y;
 }
 
 /*Create a new function operate that takes an operator and 2 numbers and then 
